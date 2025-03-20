@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>G1: MP Compilation (1-4)</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="stylesheet.css">
+    </head>
+    <body>
+        <div class="options">
+            <div class="options_text">
+                <h3>GROUP 1: MACHINE PROBLEM COMPILATION (1-4)</h3>
+                <hr>
+            </div>
+            <table style="margin: auto;">
+                <tr>
+                    <td><p><b>MP1:</b> Accuracy and Taylor's Polynomial</p></td>
+                    <td><button onclick="MP1_btn()" id="MP1_btn">Accuracy and Taylor's Polynomial</button></td>
+                </tr>
+                <tr>
+                    <td><p><b>MP2:</b> Rooth Finding Method</p></td>
+                    <td>
+                        <button onclick="MP2_1_btn()" id="MP2_1_btn">Bisection Method</button>
+                        <button onclick="MP2_2_btn()" id="MP2_2_btn">Newton-Raphason Method</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><p><b>MP3:</b> Interpolating Polynomial</p></td>
+                    <td>
+                        <button onclick="MP3_1_btn()" id="MP3_1_btn">User-defined</button>
+                        <button onclick="MP3_2_btn()" id="MP3_2_btn">Programmer-defined</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><p><b>MP4:</b> Numerical Integration</p></td>
+                    <td><button onclick="MP4_btn()" id="MP4_btn">Numerical Integration</button></td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <!--MACHINE PROBLEM (1)-->
+        <div id="MP1" style="display: none;">
+            <div class="MP1">
+                <div class="container">
+                    <div class="center">
+                        <h2>Accuracy and Taylor's Polynomial</h2><br>
+                    </div>
+                    <div style="text-align:center">
+                        <p><b>Function: </b> cos(x)</p>
+                        <p><i>Enter Values:</i></p>
+                    </div>
+                    <table style="margin: auto;">
+                        <tr>
+                            <td><p>Variable:</p></td>
+                            <td><input type="number" id="acp_variable"></td>
+                        </tr>
+                        <tr>
+                            <td><p>Point [Enter 0 for Maclaurin's Polynomial]:</p></td>
+                            <td><input type="number" id="acp_point"></td>
+                        </tr>
+                        <tr>
+                            <td><p>Degree:</p></td>
+                            <td><input type="number" id="acp_degree"></td>
+                        </tr>
+                        <tr>
+                            <td><p># of Decimal Places:</p></td>
+                            <td><input type="number" id="acp_decimal"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td style="text-align: right;">
+                                <button onclick="acp_clear()">Clear</button>
+                                <button onclick="acp_compute()">Compute</button>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <hr>
+                    
+                    <p style="text-align: center;"><b>Result/s</b></p><hr>
+                    <table style="margin: auto;">
+                        <tr>
+                            <td><p>True Value:</p></td>
+                            <td><p id="result_true_value">---</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Approximate vlaue:</p></td>
+                            <td><p id="result_approximate_vlaue">---</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Chopping:</p></td>
+                            <td><p id="result_chopping">---</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Rounding:</p></td>
+                            <td><p id="result_rounding">---</p></td>
+                        </tr>
+                    </table>
+        
+                    <hr>
+        
+                    <p style="text-align: center;"><b>Error/s</b></p><hr>
+                    <table>
+                        <tr>
+                            <th><i>Approximate Value</i></th>
+                            <th></th>
+                            <th><i>Chopping</i></th>
+                            <th></th>
+                            <th><i>Rounding</i></th>
+                        </tr>
+                        <tr>
+                            <td><p>Absolute True Error:</p></td>
+                            <td style="padding-right: 10px;"><p id="ate_av">---</p></td>
+        
+                            <td><p>Absolute True Error:</p></td>
+                            <td style="padding-right: 10px;"><p id="ate_c">---</p></td>
+                            
+                            <td><p>Absolute True Error:</p></td>
+                            <td style="padding-right: 10px;"><p id="ate_r">---</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Percent Error:</p></td>
+                            <td><p id="pe_av">---</p></td>
+        
+                            <td><p>Percent Error:</p></td>
+                            <td><p id="pe_c">---</p></td>
+        
+                            <td><p>Percent Error:</p></td>
+                            <td><p id="pe_r">---</p></td>
+                        </tr>
+        
+                        <tr>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!--MACHINE PROBLEM (2)-->
+        <div class="MP2">
+            <!--MP (2-1)-->
+            <div id="MP2_1" style="display: none;">
+                <div class="container">
+                  <div class="pad">
+                    <!--BISECTION-->
+                    <h2>Bisection Method Calculator</h2>
+                    <form id="input_form">
+                        <div class="in">
+                          <!--Input Formula-->
+                          <label style="margin-right:7px">Enter equation (f(x)): </label>
+                          <input type="text" id="formula" name="formula" placeholder="f(x)"><br>
+                        </div>
+                        <div class="in">
+                          <!--Input interval-->
+                          <label style="margin-right:11px">Enter interval [a , b]: </label>
+                          [ <input type="text" id="value_a" name="value_a" placeholder="a" size="5"> ,
+                          <input type="text" id="value_b" name="value_b" placeholder="b" size="5"> ]<br>
+                        </div>
+                        <div class="in">
+                          <!--Input Error-->
+                          <label style="margin-right: 33px">Enter error (ε>0): </label>
+                          <input type="text" id="error" name="error" placeholder="ε">
+                        </div>
+                    </form>
+                    <br>
+                    <button onclick="solve_bisection()">Find</button>
+                    <button onclick="location.reload()" class="c_bt">Clear</button>
+                    <div class="note_answer"><hr>
+                        <p><b>Assumptions:</b></p>
+                        <p id="a1"></p>
+                        <p id="a2"></p>
+                        <p id="a3"></p>
+                      </div>
+                    <!--Table-->
+                    <table id="table_form">
+                        <tr>
+                          <th>n</th>
+                          <th>a<sub>n</sub></th>
+                          <th>b<sub>n</sub></th>
+                          <th>f(a<sub>n</sub>)</th>
+                          <th>f(b<sub>n</sub>)</th>
+                          <th>c<sub>n</sub></th>
+                          <th>f(c<sub>n</sub>)</th>
+                          <th>|b<sub>n</sub> - a<sub>n</sub>| / 2</th>
+                        </tr>
+                      </table>
+                  </div>
+                </div>
+            </div>
+            <!--MP (2-2)-->
+            <div id="MP2_2" style="display: none;">
+                <div class="container">
+                  <div class="pad">
+                    <!--NEWTON-->
+                    <h2>Newton-Raphson Method Calculator</h2>
+                    <form id="input_form">
+                        <div class="in">
+                          <!--Input Formula-->
+                          <label style="margin-right:7px">Enter equation (f(x)): </label>
+                          <input type="text" id="formula_n" name="formula_n" placeholder="f(x)"><br>
+                        </div>
+                        <div class="in">
+                          <!--Input interval-->
+                          <label style="margin-right:-1px">Enter initial point (x<sub>0</sub>):</label>
+                          <input type="text" id="initial_point" name="initial_point" placeholder="x0"><br>
+                        </div>
+                        <div class="in">
+                          <!--Input Error-->
+                          <label style="margin-right: 33px">Enter error (ε>0): </label>
+                          <input type="text" id="error_n" name="error_n" placeholder="ε">
+                        </div>
+                    </form>
+                    <br>
+                    <button onclick="solve_newton()">Find</button>
+                    <button onclick="location.reload()" class="c_bt">Clear</button>
+                    <div class="note_answer"><hr>
+                        <p><b>Assumptions:</b></p>
+        
+                        <p id="a1_n"></p>
+                        <p id="a2_n"></p>
+                        <p id="a3_n"></p>
+                        <p id="a4_n"></p>
+                      </div>
+                    <!--Table-->
+                    <table id="table_form">
+                        <tr>
+                          <th>n</th>
+                          <th>x<sub>n</sub></th>
+                          <th>f(x<sub>n</sub>)</th>
+                          <th>f'(x<sub>n</sub>)</th>
+                          <th>x<sub>n+1</sub></th>
+                          <th>|x<sub>n+1</sub> - x<sub>n</sub>|</th>
+                        </tr>
+                      </table>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <!--MACHINE PROBLEM (3)-->
+        <div class="MP3">
+            <!--MP (3-1)-->
+            <div id="MP3_1" style="display: none;">
+                <div class="container">
+                    <h2>Interpolating Polynomial (User-defined)</h2><br>
+                    <p style="margin: 0.5px;">Enter Points (x,y):</p>
+                    ( <input type="text" placeholder="x" id="value_x" size="5"> ,
+                    <input type="text" placeholder="y" id="value_y" size="5"> )<br>
+                    <button onclick="add()">Add</button><br><br>
+    
+                    <p style="margin: 0.5px">Enter value f(x):</p>
+                    <input type="text" placeholder="x" id="value_for_x">
+    
+                    <br>
+                    <button onclick="solve()">Solve</button>
+                    <button onclick="clear_all()">Clear</button>
+                    <hr>
+                    <p><b>Points:</b></p>
+                    <p id="points"></p>
+                    <br>
+                    <p><b>Answer:</b></p>
+                    <!--For value testing visualization-->
+                    <!--<p id="answer1"></p>
+                    <p id="answer2"></p>-->
+                    <p id="answer"></p>
+                    <p id="sub_answer"></p><br>
+                </div>    
+            </div>
+            <!--MP (3-2)-->
+            <div id="MP3_2" style="display: none;">
+                <div class="container">
+                    <h2>Interpolating Polynomial (Programmer-defined)</h2><br>
+                    <p style="margin: 0.5px;"><b>USD to PHP Exchange Rate</b></p>
+                    <p style="margin: 00.5px;"><i>(Apr.01.22 - May.13.22)</i></p>
+                    <p style="display: inline;">Link: </p><a href="https://tradingeconomics.com/philippines/currency" target="_blank">tradingeconomics.com</a>
+                    <br><br><hr><br>
+
+                    <p style="margin: 0.5px">Enter value f(x):</p>
+                    <input type="text" placeholder="x" id="value_for_x_pd">
+    
+                    <br>
+                    <button onclick="solve1()">Solve</button>
+                    <button onclick="clear_all1()">Clear</button>
+                    <br><br><hr>
+                    <p><b>Answer:</b></p>
+                    <!--For value testing visualization-->
+                    <!--<p id="answer1"></p>-->
+                    <p id="answer2"></p>
+                    <p id="answer_pd"></p><br>
+                </div>    
+            </div>
+        </div>
+        
+        <!--MACHINE PROBLEM (4)-->
+        <div id="MP4" style="display: none;">
+            <div class="MP4">
+                <div class="center">
+                    <div class="container">
+                        <h2>Numerical Integration</h2><br>
+                        <table>
+                            <tr>
+                                <td><p>Enter function:</p></td>
+                                <td><input type="text" id="value_function" placeholder="f(x)"></td>
+                            </tr>
+                            <tr>
+                                <td><p>Enter value for (a):</p></td>
+                                <td><input type="number" id="value_a_mp4" placeholder="a"></td>
+                            </tr>
+                            <tr>
+                                <td><p>Enter value for (b):</p></td>
+                                <td><input type="number" id="value_b_mp4" placeholder="b"></td>
+                            </tr>
+                            <tr>
+                                <td><p>Enter number of subinterval (n):</td>
+                                <td><input type="number" id="subinterval" placeholder="n"></td>
+                            </tr>
+                        </table>
+                        
+                        <div style="text-align: right">
+                            <button onclick="clear_trapezoidal_simpson()">Clear</button>
+                            <button onclick="compute_trapezoidal_simpson()">Compute</button>
+                        </div>
+                        <hr>
+                        <p><b>Trapezoidal:</b></p>
+                        <p id="result_trapezoidal"></p>
+                        <br>
+                        <p><b>Simpson:</b></p>
+                        <p id="result_simpson"></p><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.5.0/math.js" integrity="sha512-y5b7YGYHrDlsI/a24gwJFvK7lx866ski5dPOQs+U1kEnblCArMmf0Zoc/TmREUIj83ZoiOOE6QGBYV4OiCp68Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="script.js" async defer></script>
+    </body>
+</html>

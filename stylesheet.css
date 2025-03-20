@@ -1,0 +1,127 @@
+/*MP 1*/
+.MP1 .center {
+    text-align: center;
+    font-family: arial, sans-serif;
+}
+.MP1 h2,h4, p{
+    margin: 0.5px;
+}
+.MP1 th {
+    text-align: left;
+    border: none;
+}
+.MP1 .container {
+    padding: 30px;
+    width: fit-content;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(105, 105, 105);
+    border-radius: 3px;
+    padding-bottom: 6px;
+    margin: auto;
+}
+
+/*MP 2*/
+.MP2 table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+.MP2 td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    font-family: 'Ubuntu', sans-serif;
+}
+.MP2 button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+.MP2 .c_bt:hover {
+    background-color: #f44336;
+    color: white;
+}
+.MP2 tr:nth-child(even) {
+    background-color: #dddddd;
+    text-align: center;
+}
+.MP2 label, p,h2 {
+    font-family: 'Ubuntu', sans-serif;
+}
+.MP2 h3,h4 {
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0.5px;
+}
+.in {
+    padding-bottom: 4px;
+}
+.MP2 .note_answer {
+    padding-bottom: 2px;
+    padding-top: 2px;
+}
+.MP2 .container {
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(105, 105, 105);
+    border-radius: 3px;
+    padding-bottom: 6px;
+}
+.MP2 .pad {
+    padding: 6px;
+    text-align: center;
+    }
+.MP2 .top {
+    text-align: center;
+}
+
+/*MP 3*/
+.MP3 button {
+    margin-top: 10px;
+}
+.MP3 h2,h4{
+    margin: 0.5px;
+}
+.MP3 .container {
+    padding: 30px;
+    width: fit-content;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(105, 105, 105);
+    border-radius: 3px;
+    padding-bottom: 6px;
+    margin: auto;
+    text-align: center;
+}
+
+/*MP 4*/
+.MP4 h2,h4{
+    margin: 0.5px;
+}
+.MP4 .center {
+    text-align: center;
+    font-family: arial, sans-serif;
+}
+.MP4 .center table {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+.MP4 .container {
+    padding: 30px;
+    width: fit-content;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(105, 105, 105);
+    border-radius: 3px;
+    padding-bottom: 6px;
+    margin: auto;
+}
+
+/*OPTIONS*/
+.options td {
+    padding: 5px;
+    padding-right: 10px;
+}
+.options_text {
+    text-align: center;
+}
