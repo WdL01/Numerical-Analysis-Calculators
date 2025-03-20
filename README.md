@@ -1,5 +1,5 @@
 (1) Accuracy and Taylor’s Polynomial Calculator
-This program calculates function approximations using Taylor’s Polynomial, allowing users to estimate function values at a given point with specified degrees of accuracy. It also analyzes errors by comparing true values, approximate values, and errors introduced through chopping and rounding.
+- This program calculates function approximations using Taylor’s Polynomial, allowing users to estimate function values at a given point with specified degrees of accuracy. It also analyzes errors by comparing true values, approximate values, and errors introduced through chopping and rounding.
 
 Features:
 ✅ Taylor series expansion for function approximation
@@ -16,8 +16,7 @@ How It Works:
 * Results display true values, approximate values, and error metrics in a structured format.
 
 (2) Root-Finding Calculator (Bisection & Newton-Raphson Methods)
-
-This program implements numerical root-finding algorithms using the Bisection Method and Newton-Raphson Method. It allows users to find the roots of a given function by iterating through the methods with specified precision.
+- This program implements numerical root-finding algorithms using the Bisection Method and Newton-Raphson Method. It allows users to find the roots of a given function by iterating through the methods with specified precision.
 
 Features:
 * Computes function roots using two well-known numerical methods
@@ -26,7 +25,7 @@ Features:
 * Step-by-step iteration output for better understanding
 
 (3) Interpolating Polynomial (User-defined) Calculator
-This program allows users to compute an interpolating polynomial based on user-defined data points. It enables polynomial interpolation to estimate function values at given points using the provided dataset.
+- This program allows users to compute an interpolating polynomial based on user-defined data points. It enables polynomial interpolation to estimate function values at given points using the provided dataset.
 
 Features:
 ✅ User-defined point input for interpolation
@@ -40,7 +39,7 @@ How It Works:
 * The solution is displayed, along with the entered points for reference.
 
 (4) Numerical Integration Calculator
-This program performs numerical integration using the Trapezoidal Rule and Simpson’s Rule, allowing users to approximate definite integrals for a given function over a specified interval.
+- This program performs numerical integration using the Trapezoidal Rule and Simpson’s Rule, allowing users to approximate definite integrals for a given function over a specified interval.
 
 Features:
 ✅ Supports Trapezoidal Rule and Simpson’s Rule for numerical integration
